@@ -1,0 +1,682 @@
+            /* CSS Reset */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body,
+            html {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                width: 100%;
+                font-family: "Staatliches", sans-serif;
+                overflow: hidden; /* Prevent scrolling */
+            }
+
+            .tip,
+            #tip1,
+            #tip2,
+            #tip3,
+            #tip4,
+            #tip5,
+            #tip6,
+            #tip7,
+            #tip8,
+            #tip9,
+            #tip10,
+            #tip11,
+            #tip12,
+            #tip13,
+            #tip14,
+            #tip15,
+            #tip16,
+            #tip17,
+            #tip18,
+            #tip19,
+            #tip20,
+            #tip21,
+            #tip22,
+            #tip23,
+            #tip24,
+            #tip25,
+            #tip26,
+            #tip27,
+            #tip28,
+            #tip29,
+            #tip30,
+            #tip31,
+            #tip32 {
+                display: none;
+                position: absolute;
+                top: 40px;
+                left: 50%;
+                transform: translate(-50%, 0%);
+                text-align: center;
+            }
+
+            #splash-screen {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                background-color: #6a99ee; /* Light blue color code */
+                color: #fff; /* White text color */
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                animation: fadeOut 3s ease-in-out 1s forwards;
+            }
+
+            h1 {
+                font-size: 4em;
+                margin: 0.5em 0;
+            }
+
+            .small-text {
+                font-size: 1.5em;
+                margin: 0.3em 0;
+            }
+
+            .tiny-text {
+                font-size: 1em;
+                margin: 0.2em 0;
+            }
+
+            @keyframes fadeOut {
+                from {
+                    opacity: 1;
+                }
+                to {
+                    opacity: 0;
+                }
+            }
+
+            #game-content {
+                display: none; /* Initially hide the game content */
+            }
+
+            /* Center the black vessel */
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh; /* Full height of the viewport */
+                margin: 0; /* Remove default margin */
+                padding: 0;
+                background-color: #6a99ee; /* Light blue color code */
+                position: relative; /* Make body a positioning context */
+            }
+
+            .parent-container {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            /* Ruler styles */
+            .ruler {
+                position: fixed;
+                background-color: rgba(255, 255, 0, 0.5); /* Yellow with 50% transparency */
+                transform: translate(0px, 0px);
+            }
+
+            .ruler.top {
+                width: 100%;
+                height: 5px; /* Adjust height as needed */
+                top: 50%;
+                z-index: 1000; /* Ensure it's above other elements */
+                transform: translate(0px, 0px);
+            }
+
+            .ruler.left {
+                width: 5px;
+                height: 100%; /* Adjust height as needed */
+                left: 50%;
+                z-index: 1010; /* Ensure it's above other elements */
+                transform: translate(0px, 0px);
+            }
+
+            .tick-top {
+                position: absolute;
+                top: 5px;
+                height: 10px;
+                width: 1px;
+                background-color: rgba(255, 255, 0, 0.5); /* Yellow with 50% transparency */
+                transform: translate(0px, 0px);
+            }
+
+            .tick-label-top {
+                position: absolute;
+                top: 20px;
+                color: rgba(255, 255, 0, 0.5); /* Yellow with 50% transparency */
+                font-size: 12px;
+                transform: translate(0px, 0px);
+            }
+
+            .tick-left {
+                position: absolute;
+                left: 5px;
+                width: 10px;
+                height: 1px;
+                background-color: rgba(255, 255, 0, 0.5); /* Yellow with 50% transparency */
+                transform: translate(0px, 0px);
+            }
+
+            .tick-label-left {
+                position: absolute;
+                top: 20px;
+                color: rgba(255, 255, 0, 0.5); /* Yellow with 50% transparency */
+                font-size: 12px;
+                transform: translate(20px, 0px);
+            }
+
+            /* Existing CSS */
+            .coordinate-values {
+                display: inline-block;
+                margin-right: 40px; /* Adds space between coordinates and slope */
+            }
+
+            .slope-values {
+                display: inline-block;
+                margin-left: 40px; /* Adds space between slope and points */
+            }
+
+            .black-vessel {
+                position: absolute;
+                width: 38px; /* Adjust the size as needed */
+                height: 20px; /* Adjust the size as needed */
+                background-color: transparent; /* Make the container invisible */
+                /* Position the vessel */
+                top: 50%;
+                left: 50%;
+                /* Center horizontally */
+                transform: translate(-17px, -8px);
+                z-index: 2001;
+            }
+
+            .periscope1 {
+                position: absolute;
+                top: 0px; /* Adjust position */
+                left: 19px; /* Adjust position */
+                width: 1px; /* Adjust the size */
+                height: 10px; /* Adjust the size */
+                background-color: black;
+                z-index: 2010;
+            }
+
+            .periscope2 {
+                position: absolute;
+                top: 0px; /* Adjust position */
+                left: 19px; /* Adjust position */
+                width: 2px; /* Adjust the size */
+                height: 1px; /* Adjust the size */
+                background-color: black;
+                animation: moveLeftRight 5s infinite; /* Apply the animation */
+                z-index: 2010;
+            }
+
+            .tower {
+                position: absolute;
+                top: 5px; /* Adjust position */
+                left: 16px; /* Adjust position */
+                width: 7.5px; /* Adjust the size */
+                height: 10px; /* Adjust the size */
+                background-color: black;
+                z-index: 2010;
+            }
+
+            .nose {
+                position: absolute;
+                top: 7px; /* Adjust position */
+                left: 25px; /* Adjust position */
+                width: 10px;
+                height: 10px;
+                background-color: black;
+                border-radius: 50%; /* Make it a circle */
+                z-index: 2010;
+            }
+
+            .tail {
+                position: absolute;
+                top: 7px; /* Adjust position */
+                left: 1.5px; /* Adjust position */
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 5px 0 5px 8.6px; /* Adjust the dimensions */
+                border-color: transparent transparent transparent black;
+                transform: rotate(180deg); /* Rotate the triangle to point left */
+                z-index: 2010;
+            }
+
+            .propeller {
+                position: absolute;
+                top: 10px; /* Adjust position */
+                left: 0px; /* Adjust position */
+                width: 1px; /* Adjust the size */
+                height: 3px; /* Adjust the size */
+                background-color: black;
+                z-index: 2010;
+                animation: shrinkGrow 0.25s infinite; /* Apply the animation */
+            }
+
+            @keyframes shrinkGrow {
+                0%,
+                100% {
+                    /*height: 3px; /* Original height */
+                    top: 9px; /* Original position */
+                }
+                50% {
+                    /*height: 1px; /* Shrink height */
+                    top: 12px; /* Move down */
+                }
+            }
+
+            @keyframes moveLeftRight {
+                0%,
+                100% {
+                    left: 19px; /* Original position */
+                }
+                50% {
+                    left: 18px; /* Move 10px to the left */
+                }
+            }
+
+            .rectangle {
+                position: absolute;
+                top: 7px; /* Adjust position */
+                left: 10px; /* Adjust position */
+                width: 20px; /* Adjust the width */
+                height: 10px; /* Adjust the height */
+                background-color: black;
+                z-index: 2010;
+            }
+
+            /* Blue vessel styles */
+            .blue-vessel {
+                width: 50px; /* Adjust width if needed */
+                height: 27.5px; /* Adjust height if needed */
+                background-color: blue; /* Set background color to black */
+                position: absolute; /* Position the vessel */
+                clip-path: polygon(
+                    25% 38%,
+                    37% 38%,
+                    37% 26%,
+                    43.75% 25.82%,
+                    44.57% 35.76%,
+                    50.78% 36.01%,
+                    50.78% 25%,
+                    57.43% 25%,
+                    57.43% 38.75%,
+                    73.77% 39.35%,
+                    74.75% 43.75%,
+                    88.49% 36.92%,
+                    90.12% 39.95%,
+                    75% 48.09%,
+                    75% 51.5%,
+                    98.72% 51.5%,
+                    75% 75%,
+                    25% 75%,
+                    0.05% 51.5%,
+                    25% 51.5%
+                );
+            }
+
+            /* Yellow vessel styles */
+            .yellow-vessel {
+                background-color: yellow !important;
+            }
+
+            #coordinates {
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: rgba(255, 255, 255, 0.2);
+                padding: 10px;
+                border-radius: 5px;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center; /* Center content horizontally */
+                border: 2px solid red;
+                width: 1242px;
+                max-width: calc(100% - 40px);
+                min-height: 120px;
+                overflow: auto;
+                z-index: 1000;
+            }
+
+            /* Style for each set of coordinates */
+            .coordinates-group {
+                margin-right: 5px;
+                /* Add some space between groups */
+                margin-left: 5px;
+                /* Add some space between groups */
+                margin-bottom: 5px;
+                /* Add some space at the bottom */
+                border: 2px solid red;
+                /* Add red border */
+                padding: 5px;
+                /* Add padding */
+                width: 390px;
+                /* Adjust this width as needed */
+                white-space: nowrap;
+                /* Prevent wrapping */
+                overflow: hidden;
+                /* Hide overflow if content exceeds width */
+                text-overflow: ellipsis;
+                /* Show ellipsis (...) for overflow */
+                margin-bottom: 10px;
+                /* Add space between groups */
+                background-color: rgba(255, 255, 255, 0);
+                /* Semi-transparent white background */
+            }
+
+            /* Style for black vessel display box */
+            #blackSquareBox {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+
+            /* Style for artillery slope box */
+            #artillerySlope {
+                margin-right: 5px;
+                /* Add some space between groups */
+                margin-left: 5px;
+                /* Add some space between groups */
+                margin-bottom: 5px;
+                /* Add some space at the bottom */
+                border: 2px solid red;
+                /* Add red border */
+                padding: 2px;
+                /* Add padding */
+                width: 150px;
+                /* Adjust this width as needed */
+                white-space: nowrap;
+                /* Prevent wrapping */
+                overflow: hidden;
+                /* Hide overflow if content exceeds width */
+                text-overflow: ellipsis;
+                /* Show ellipsis (...) for overflow */
+                margin-bottom: 2px;
+                /* Add space between groups */
+                background-color: rgba(255, 255, 255, 0.2);
+                /* Semi-transparent white background */
+            }
+
+            #artilleryM {
+                background-color: rgba(255, 255, 255, 0.1);
+                /* Semi-transparent white background */
+            }
+
+            .coordinates-group span {
+                margin-right: 0;
+                /* Remove space between span elements */
+                background-color: rgba(255, 255, 255, 0);
+                /* Semi-transparent white background */
+            }
+
+            /* Move container styles */
+            #move-container {
+                display: flex;
+                align-items: center;
+                justify-content: center; /* Center content horizontally */
+                background-color: rgba(255, 255, 255, 0);
+                margin: 10px auto;
+                text-align: center;
+            }
+
+            #move-button,
+            #stop-button,
+            #artillery-button,
+            #torpedo-button,
+            #pause-button,
+            #refresh-button,
+            #next-round-button,
+            #settings-button,
+            #difficulty-button,
+            .dropdown-menu a {
+                padding: 5px 10px;
+                /* Add padding */
+                background-color: rgba(76, 175, 80, 0.8);
+                /* Green background color with 80% opacity */
+                color: white;
+                /* White text color */
+                border: none;
+                /* Remove border */
+                border-radius: 5px;
+                /* Rounded corners */
+                cursor: pointer;
+                /* Add pointer cursor on hover */
+                margin-left: 5px;
+                /* Add margin to the left */
+                margin-right: 5px;
+                /* Add margin to the right */
+            }
+
+            #next-round-button {
+                visibility: hidden;
+            }
+            
+            #next-round-button {
+    			display: none;
+			}
+
+
+            /* Input styles */
+            input[type="number"] {
+                padding: 5px;
+                /* Add padding */
+                border-radius: 5px;
+                /* Rounded corners */
+                border: 1px solid #ccc;
+                /* Add border */
+                margin-right: 5px;
+                /* Add margin to the right */
+                width: 70px;
+                /* Set width */
+                background-color: rgba(255, 255, 255, 0.5);
+                /* Semi-transparent white background */
+            }
+
+            @keyframes blink {
+                0%,
+                50% {
+                    opacity: 1;
+                }
+                25%,
+                75% {
+                    opacity: 0;
+                }
+            }
+
+            .red-dot {
+                width: 30px;
+                height: 30px;
+                background-color: red;
+                border-radius: 50%;
+                /* Make it round */
+                position: absolute;
+                transform: translate(-15px, -15px);
+                visibility: hidden;
+                /* Position the dot */
+                z-index: 6030;
+                animation: blink 0.5s infinite; /* 0.5 seconds cycle, infinite repeat */
+            }
+
+            .red-dot2 {
+                width: 30px;
+                height: 30px;
+                background-color: red;
+                border-radius: 50%;
+                /* Make it round */
+                position: absolute;
+                transform: translate(-15px, -15px);
+                visibility: hidden;
+                /* Position the dot */
+                z-index: 6031;
+                animation: blink 0.5s infinite; /* 0.5 seconds cycle, infinite repeat */
+            }
+
+            /* Quadrant styles */
+            .quadrant {
+                position: absolute;
+                color: rgba(255, 255, 0, 0.5); /* Yellow with 50% transparency */
+                font-size: 50px; /* Large font size */
+                font-weight: bold;
+                opacity: 0;
+                z-index: 999; /* Ensure it appears above other elements */
+                pointer-events: none; /* Allow interactions to pass through */
+            }
+
+            /* Position each quadrant */
+            #quadrant2 {
+                top: 25%; /* Adjust as needed */
+                left: 15%; /* Adjust as needed */
+            }
+
+            #quadrant1 {
+                top: 25%; /* Adjust as needed */
+                right: 15%; /* Adjust as needed */
+            }
+
+            #quadrant3 {
+                bottom: 25%; /* Adjust as needed */
+                left: 15%; /* Adjust as needed */
+            }
+
+            #quadrant4 {
+                bottom: 25%; /* Adjust as needed */
+                right: 15%; /* Adjust as needed */
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes fadeOut {
+                from {
+                    opacity: 1;
+                }
+                to {
+                    opacity: 0;
+                }
+            }
+
+            .round {
+                position: absolute;
+                color: rgba(255, 0, 0, 0.5); /* Red with 50% transparency */
+                font-size: 30px; /* Large font size */
+                font-weight: bold;
+                z-index: 999; /* Ensure it appears above other elements */
+                pointer-events: none; /* Allow interactions to pass through */
+                top: 1%; /* Adjust as needed */
+                left: 1%; /* Adjust as needed */
+            }
+
+            .pauses {
+                position: absolute;
+                color: rgba(255, 0, 0, 0.5); /* Red with 50% transparency */
+                font-size: 30px; /* Large font size */
+                font-weight: bold;
+                z-index: 999; /* Ensure it appears above other elements */
+                pointer-events: none; /* Allow interactions to pass through */
+                top: 5%; /* Adjust as needed */
+                right: 1%; /* Adjust as needed */
+            }
+
+            .torps {
+                position: absolute;
+                color: rgba(255, 0, 0, 0.5); /* Red with 50% transparency */
+                font-size: 30px; /* Large font size */
+                font-weight: bold;
+                z-index: 999; /* Ensure it appears above other elements */
+                pointer-events: none; /* Allow interactions to pass through */
+                top: 1%; /* Adjust as needed */
+                right: 1%; /* Adjust as needed */
+            }
+
+            .score {
+                position: absolute;
+                color: rgba(255, 0, 0, 0.5); /* Red with 50% transparency */
+                font-size: 30px; /* Large font size */
+                font-weight: bold;
+                z-index: 999; /* Ensure it appears above other elements */
+                pointer-events: none; /* Allow interactions to pass through */
+                top: 5%; /* Adjust as needed */
+                left: 1%; /* Adjust as needed */
+            }
+
+            /* CSS for the drop-down menu */
+            .difficulty-button {
+                position: relative;
+                display: inline-block;
+            }
+
+            .dropdown-menu {
+                display: none;
+                position: absolute;
+                bottom: 100%; /* Position the menu above the button */
+                top: 0;
+                right: 0;
+                background-color: #f9f9f9;
+                min-width: 70px;
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                z-index: 6000;
+            }
+
+            .dropdown-menu a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                background-color: #52cc7a; /* Set the default background color to green */
+            }
+
+            .dropdown-menu a:hover {
+                background-color: #f1f1f1;
+            }
+
+            .dialogue {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                height: 25vmin;
+                width: 92vmin;
+                color: rgba(255, 0, 0, 0.7); /* Red with 50% transparency */
+                transform: translate(-50%, -50%);
+                visibility: hidden;
+                z-index: 100;
+            }
+
+            .dialogue2 {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                height: 25vmin;
+                width: 48vmin;
+                color: rgba(255, 0, 0, 0.7); /* Red with 50% transparency */
+                transform: translate(-50%, -50%);
+                visibility: hidden;
+                z-index: 100;
+            }
+
+            #you_win,
+            #game_over {
+                font-family: VT323;
+                font-size: 12vmin;
+                text-align: left;
+            }

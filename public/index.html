@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Coordinate Hunter</title>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div id="splash-screen">
+            <h1>Coordinate Hunter</h1>
+            <p class="small-text">Created By Sterling Daniels</p>
+            <p class="tiny-text">&copy; 2024 All Rights Reserved by Risentide LLC</p>
+        </div>
+        <div id="tips">
+            <p class="tip" id="tip1">**Objective**: Your mission is to locate and sink all the blue ships using your submarine.</p>
+
+            <p class="tip" id="tip2">**Targeting**: To aim at enemy vessels, enter the precise x and y coordinates. Use your keen sense of strategy to predict and target enemy positions.</p>
+
+            <p class="tip" id="tip3">
+                **Movement**: Maneuver your submarine across the grid by inputting coordinates or using the keyboard for dynamic control: <br />
+                **W**: Move forward <br />
+                **A**: Turn left <br />
+                **S**: Move backward <br />
+                **D**: Turn right
+            </p>
+
+            <p class="tip" id="tip4">**Arrow Keys**: Navigate in the respective directions</p>
+
+            <p class="tip" id="tip5">**Coordinate Input**: Inputting your travel destination with x and y coordinates, then hitting the move button, will move your submarine faster than using the keyboard keys.</p>
+
+            <p class="tip" id="tip6">**Visible Axes**: The game screen displays a visible x (horizontal) and y (vertical) axis.</p>
+
+            <p class="tip" id="tip7">**Understanding Coordinates**: These axes help you determine your submarine's position and aim more accurately. Each point on the screen corresponds to a specific x and y coordinate.</p>
+
+            <p class="tip" id="tip8">**Using the Grid**: By referencing these coordinates, you can plan your moves and attacks with precision, making it easier to navigate the game and target enemy ships.</p>
+
+            <p class="tip" id="tip9">**Coordinate Display**: The display shows the x and y coordinates of both your submarine and the enemy ships.</p>
+
+            <p class="tip" id="tip10">**Strategic Targeting**: Knowing the exact coordinates of enemy ships allows you to target them more effectively. You can enter the specific coordinates to aim your torpedoes with precision.</p>
+
+            <p class="tip" id="tip11">**Position Awareness**: By constantly monitoring the coordinates, you can keep track of your submarine's position relative to the enemy, making it easier to navigate and avoid enemy fire.</p>
+
+            <p class="tip" id="tip12">**Slope of Movement (M)**: Each moving vessel has its slope (indicated by the letter M) displayed on the screen.</p>
+
+            <p class="tip" id="tip13">**Understanding Slope**: The slope (M) shows the direction and steepness of a vessel's path. It helps you understand how fast and in which direction the enemy ships are moving.</p>
+
+            <p class="tip" id="tip14">
+                **Using Slope for Targeting**: By knowing the slope, you can predict the future position of an enemy ship. This allows you to aim ahead of the ship's current location, increasing your chances of a successful hit.
+            </p>
+
+            <p class="tip" id="tip15">**Artillery and Torpedo Slope**: The display also shows the slope of your artillery and torpedo fire.</p>
+
+            <p class="tip" id="tip16">**Understanding Fire Slope**: The slope indicates the trajectory of your shots. A steeper slope means a more vertical path, while a shallower slope indicates a more horizontal trajectory.</p>
+
+            <p class="tip" id="tip17">
+                **Adjusting Targeting**: By monitoring the slope of your shots, you can fine-tune your aim. If your shots are consistently missing, adjust your firing angle based on the displayed slope to improve accuracy.
+            </p>
+
+            <p class="tip" id="tip18">**Torpedoes**: Torpedoes are your most accurate weapon, allowing for precise targeting of enemy ships. However, they are limited in number, so use them wisely.</p>
+
+            <p class="tip" id="tip19">
+                **Difficulty Difficulty**: Players can change the difficulty to easy, medium, or difficult. The game starts in easy mode. <br />
+                **Easy**: Suitable for beginners, with slower enemy movements and simpler targeting. <br />
+                **Medium**: A balanced difficulty for players with some experience. <br />
+                **Difficult**: Fast-paced and challenging, with more agile enemies and precise targeting required.
+            </p>
+
+            <p class="tip" id="tip20">
+                **Enemy Attacks**: A ship turns yellow when it is firing on your submarine. Its coordinate display on the screen also turns yellow, so you can easily read the coordinates of the ship that is attacking your submarine. This
+                allows you to quickly identify and target the attacking vessel.
+            </p>
+
+            <p class="tip" id="tip21">
+                **Controls**: <br />
+                **r**: Fire artillery <br />
+                **t**: Fire torpedo <br />
+                **m**: Move to input coordinates <br />
+                **h**: Halt movement <br />
+                **p**: Toggle pause <br />
+                **Halt Button**: Stops your submarine from moving toward your destination coordinates
+            </p>
+
+            <p class="tip" id="tip22">**Strategy**: Plan your moves and shots carefully to outsmart your opponents. Use the terrain to your advantage and anticipate enemy movements.</p>
+
+            <p class="tip" id="tip23">The Cartesian coordinate plane consists of two perpendicular axes: the x-axis (horizontal) and the y-axis (vertical). The point where they intersect is called the origin, denoted as (0,0).</p>
+
+            <p class="tip" id="tip24">
+                The coordinate plane is divided into four quadrants: <br />
+                - Quadrant I: (+, +) <br />
+                - Quadrant II: (-, +) <br />
+                - Quadrant III: (-, -) <br />
+                - Quadrant IV: (+, -)
+            </p>
+
+            <p class="tip" id="tip25">Points are plotted using ordered pairs (x, y). The first number is the x-coordinate, and the second number is the y-coordinate.</p>
+
+            <p class="tip" id="tip26">
+                - Positive x-coordinates are to the right of the origin, and negative x-coordinates are to the left. <br />
+                - Positive y-coordinates are above the origin, and negative y-coordinates are below.
+            </p>
+
+            <p class="tip" id="tip27">
+                - To find the distance between two points \((x_1, y_1)\) and \((x_2, y_2)\), use the formula: <br />
+                \[ <br />
+                \text{Distance} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} <br />
+                \]
+            </p>
+
+            <p class="tip" id="tip28">
+                - To find the midpoint between two points \((x_1, y_1)\) and \((x_2, y_2)\), use the formula: <br />
+                \[ <br />
+                \text{Midpoint} = \left(\frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2}\right) <br />
+                \]
+            </p>
+
+            <p class="tip" id="tip29">
+                - The slope of a line passing through points \((x_1, y_1)\) and \((x_2, y_2)\) is: <br />
+                \[ <br />
+                \text{Slope} = \frac{y_2 - y_1}{x_2 - x_1} <br />
+                \]
+            </p>
+
+            <p class="tip" id="tip30">- The equation of a line in slope-intercept form is \(y = mx + b\), where \(m\) is the slope and \(b\) is the y-intercept (the point where the line crosses the y-axis).</p>
+
+            <p class="tip" id="tip31">
+                - The x-intercept is where the line crosses the x-axis \((y = 0)\). <br />
+                - The y-intercept is where the line crosses the y-axis \((x = 0)\).
+            </p>
+
+            <p class="tip" id="tip32">
+                - Translations, reflections, and rotations can be applied to points and shapes on the coordinate plane. <br />
+                - Translation moves a point by adding a constant to the x and y coordinates. <br />
+                - Reflection across the y-axis changes \((x, y)\) to \((-x, y)\). <br />
+                - Reflection across the x-axis changes \((x, y)\) to \((x, -y)\).
+            </p>
+        </div>
+        <div class="parent-container">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=VT323" />
+            <div class="dialogue">
+                <h1 id="you_win">You win this round!</h1>
+            </div>
+            <div class="dialogue2">
+                <h1 id="game_over">Game over!</h1>
+            </div>
+            <!-- redDot for torpedo-->
+            <div class="red-dot"></div>
+
+            <!-- redDot2 for artillery-->
+            <div class="red-dot2"></div>
+
+            <!-- Round -->
+            <div class="round" id="roundDisplay"></div>
+
+            <!-- Pauses -->
+            <div class="pauses" id="pauseDisplay"></div>
+
+            <!-- Torpedoes -->
+            <div class="torps" id="torpDisplay"></div>
+
+            <!-- Score -->
+            <div class="score" id="scoreDisplay"></div>
+
+            <!-- Quadrant Indicators -->
+            <div class="quadrant" id="quadrant1">Quadrant 1 (+, +)</div>
+            <div class="quadrant" id="quadrant2">Quadrant 2 (-, +)</div>
+            <div class="quadrant" id="quadrant3">Quadrant 3 (-, -)</div>
+            <div class="quadrant" id="quadrant4">Quadrant 4 (+, -)</div>
+
+            <!-- Black vessel with initial coordinates -->
+            <div class="black-vessel" id="vessel">
+                <div class="periscope1"></div>
+                <div class="periscope2"></div>
+                <div class="tower"></div>
+                <div class="nose"></div>
+                <div class="tail"></div>
+                <div class="propeller"></div>
+                <div class="rectangle"></div>
+            </div>
+
+            <!-- Left ruler -->
+            <div class="ruler left">
+                <!-- Tick marks and labels for left ruler -->
+                <div class="tick-left" style="left: 50px;"></div>
+                <div class="tick-label-left" style="left: 50px;"></div>
+                <!-- Add more ticks and labels as needed -->
+            </div>
+
+            <!-- Top ruler -->
+            <div class="ruler top">
+                <!-- Tick marks and labels for top ruler -->
+                <div class="tick-top" style="top: 50px;"></div>
+                <div class="tick-label-top" style="top: 50px;"></div>
+                <!-- Add more ticks and labels as needed -->
+            </div>
+
+            <!-- Coordinates display -->
+            <div id="coordinates">
+                <!-- Initial coordinates of the black vessel -->
+                <div class="coordinates-group" id="blackVesselBox">
+                    Your Sub:
+                    <span class="coordinate-values"> X: <span id="xCoord"></span>, Y: <span id="yCoord"></span> </span>
+                    <span class="slope-values"> M: <span id="slopeBlack"></span> </span>, Points: <span id="pointsBlack"></span>
+                </div>
+                <!-- Coordinates of blue vessels -->
+                <div class="coordinates-group" id="blueVessel1">
+                    Ship 1:
+                    <span class="coordinate-values"> X: <span id="xCoordBlue1">0</span>, Y: <span id="yCoordBlue1">0</span> </span>
+                    <span class="slope-values"> M: <span id="slopeBlue1">0</span> </span>, Points: <span id="pointsBlue1"></span>
+                </div>
+                <div class="coordinates-group" id="blueVessel2">
+                    Ship 2:
+                    <span class="coordinate-values"> X: <span id="xCoordBlue2">0</span>, Y: <span id="yCoordBlue2">0</span> </span>
+                    <span class="slope-values"> M: <span id="slopeBlue2">0</span> </span>, Points: <span id="pointsBlue2"></span>
+                </div>
+                <div class="coordinates-group" id="blueVessel3">
+                    Ship 3:
+                    <span class="coordinate-values"> X: <span id="xCoordBlue3">0</span>, Y: <span id="yCoordBlue3">0</span> </span>
+                    <span class="slope-values"> M: <span id="slopeBlue3">0</span> </span>, Points: <span id="pointsBlue3"></span>
+                </div>
+                <div class="coordinates-group" id="blueVessel4">
+                    Ship 4:
+                    <span class="coordinate-values"> X: <span id="xCoordBlue4">0</span>, Y: <span id="yCoordBlue4">0</span> </span>
+                    <span class="slope-values"> M: <span id="slopeBlue4">0</span> </span>, Points: <span id="pointsBlue4"></span>
+                </div>
+                <div class="coordinates-group" id="blueVessel5">
+                    Ship 5:
+                    <span class="coordinate-values"> X: <span id="xCoordBlue5">0</span>, Y: <span id="yCoordBlue5">0</span> </span>
+                    <span class="slope-values"> M: <span id="slopeBlue5">0</span> </span>, Points: <span id="pointsBlue5"></span>
+                </div>
+                <!-- Move button container -->
+                <div id="move-container">
+                    <!-- Input for x coordinate -->
+                    <input type="number" id="xCoordinateInput" placeholder="X" min="0" />
+                    <!-- Input for y coordinate -->
+                    <input type="number" id="yCoordinateInput" placeholder="Y" min="0" />
+                    <!-- Move button -->
+                    <button id="move-button">Move</button>
+                    <!-- Stop button -->
+                    <button id="stop-button">Halt</button>
+                    <!-- Artillery button -->
+                    <input type="number" id="artilleryXInput" placeholder="X" min="0" />
+                    <input type="number" id="artilleryYInput" placeholder="Y" min="0" />
+                    <button id="artillery-button">Artillery</button>
+                    <!-- Torpedo button -->
+                    <button id="torpedo-button">Torpedo</button>
+                    <div id="artillerySlope">M: <span id="artilleryM"></span>, D: <span id="artilleryD"></span></div>
+                    <!-- Pause button -->
+                    <button id="pause-button">Pause</button>
+                    <!-- Refresh button -->
+                    <button id="refresh-button">Refresh</button>
+                    <!-- Round button -->
+                    <button id="next-round-button">Next Round</button>
+                    <!-- Setting button Dropdown Menu -->
+
+                    <div class="difficulty-container">
+                        <button id="difficulty-button">Difficulty<i class="fa fa-gear"></i></button>
+                        <div id="dropdown-menu" class="dropdown-menu">
+                            <a href="#option1" data-option="0">Easy</a>
+                            <a href="#option2" data-option="1">Medium</a>
+                            <a href="#option3" data-option="2">Difficult</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<script src="slide1.js"></script>
+		<script src="slide2.js"></script>
+		<script src="slide3.js"></script>
+		<script src="slide4.js"></script>
+		<script src="slide5.js"></script>
+    </body>
+</html>
