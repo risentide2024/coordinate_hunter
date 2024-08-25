@@ -1,11 +1,1 @@
-            //------Tips-----------------------------------------------------
-            // shows random playing tips-(Client Side)-(Server Side)
-            function showTip() {
-                let num = Math.floor(Math.random() * 32) + 1;
-                document.getElementById("tip" + num).style.display = "block";
-                setTimeout(function () {
-                    // Hide the splash screen after 4 seconds
-                    document.getElementById("tip" + num).style.display = "none";
-                    // You can add logic here to show the main game content
-                }, 10000); // Display splash screen for 10 seconds
-            }
+eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('7 h(){g 0=8.f(8.e()*d)+1;6.5("4"+0).3.2="c";b(7(){6.5("4"+0).3.2="a"},9)}',18,18,'num||display|style|tip|getElementById|document|function|Math|10000|none|setTimeout|block|32|random|floor|let|showTip'.split('|'),0,{}))
